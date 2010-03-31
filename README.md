@@ -1,4 +1,4 @@
-# fussy is a actionscript reflection query language #
+# fussy is an actionscript reflection query language #
 
 Its still in development, give me a couple more days
 
