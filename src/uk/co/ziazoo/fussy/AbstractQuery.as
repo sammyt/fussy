@@ -1,6 +1,6 @@
 package uk.co.ziazoo.fussy
 {
-  public class AbstractQuery implements IQuery
+  public class AbstractQuery implements IFilter
   {
     protected var description:XML;
     protected var filtered:XMLList;

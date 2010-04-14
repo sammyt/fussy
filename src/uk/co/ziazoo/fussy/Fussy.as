@@ -2,6 +2,8 @@ package uk.co.ziazoo.fussy
 {
   import flash.utils.Dictionary;
   import flash.utils.describeType;
+  
+  import uk.co.ziazoo.fussy.query.Query;
 
   public class Fussy
   {
@@ -24,6 +26,11 @@ package uk.co.ziazoo.fussy
         cache[type] = describeType(type);
       }
       return cache[type] as XML
+    }
+    
+    public function query():Query
+    {
+      return new Query();
     }
   }
 }

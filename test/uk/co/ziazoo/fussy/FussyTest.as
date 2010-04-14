@@ -1,5 +1,8 @@
 package uk.co.ziazoo.fussy 
 {
+  import uk.co.ziazoo.fussy.query.IQuery;
+  import uk.co.ziazoo.fussy.query.Query;
+
   /**
    * nothing useful here yet, just demos of the api
    */ 
@@ -9,28 +12,18 @@ package uk.co.ziazoo.fussy
     public function createMethodFussy():void
     {
       var fussy:Fussy = new Fussy();
-      var query:IQuery = fussy.forType(Bubbles).findMethods().withMetadata("Inject");
+      var filter:IFilter = fussy.forType(Bubbles).findMethods().withMetadata("Inject");
     }
     
     [Test]
     public function createVariableFussy():void
     {
       var fussy:Fussy = new Fussy();
-      var query:IQuery = fussy.forType(Bubbles).findVariables().ofType(String);
+      var filter:IFilter = fussy.forType(Bubbles).findVariables().ofType(String);
       
-      /*
-      THINKING
-      fussy.validateThat(Bubbles).hasMethod().withMethdata("Execute").argCount(1);
+      var query:IQuery = fussy.query().findMethods().named("getThing");
       
-      // [Named(index,name)]
-      validator = 
-      
-      var v = fussy.validateFor(Bubbles).metadata("Named").mustHave("index","name");
-      
-      var scheme:MetadataScheme = fussy.metadataSchemeFor("Named").mustHave("index","name");
-      
-      // is validation different from queries?
-      */
+      query.forType(Bubbles);
     }
   }
 }
