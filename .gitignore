@@ -3,3 +3,5 @@
 *.flexLibProperties
 *.FlexUnitSettings
 *.project
+*.DS_Store
+*bin/

@@ -11,7 +11,7 @@ package uk.co.ziazoo.fussy
     [Fussy]
     public var bar:String;
     
-    public function Bubbles()
+    public function Bubbles(thing:Wibble)
     {
     }
     

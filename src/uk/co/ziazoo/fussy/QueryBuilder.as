@@ -1,5 +1,11 @@
 package uk.co.ziazoo.fussy
 {
+  import flex.lang.reflect.Method;
+  
+  import uk.co.ziazoo.fussy.parser.MetadataParser;
+  import uk.co.ziazoo.fussy.parser.MethodParser;
+  import uk.co.ziazoo.fussy.parser.ParameterParser;
+
   public class QueryBuilder
   {
     private var description:XML;
@@ -11,7 +17,8 @@ package uk.co.ziazoo.fussy
     
     public function findMethods():MethodQuery
     {
-      return new MethodQuery(description);
+      return new MethodQuery(description, 
+        new MethodParser(new ParameterParser(), new MetadataParser()));
     }
     
     public function findVariables():VariableQuery
@@ -27,6 +34,11 @@ package uk.co.ziazoo.fussy
     public function findProperties():PropertyQuery
     {
       return new PropertyQuery(description);
+    }
+    
+    public function findConstructor():ConstructorQuery
+    {
+      return new ConstructorQuery(description);
     }
   }
 }

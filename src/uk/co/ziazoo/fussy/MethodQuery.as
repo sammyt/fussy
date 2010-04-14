@@ -1,10 +1,16 @@
 package uk.co.ziazoo.fussy
 {
+  import uk.co.ziazoo.fussy.parser.MethodParser;
+  
   public class MethodQuery extends AbstractQuery
   {
-    public function MethodQuery(description:XML)
+    private var methodParser:MethodParser;
+    
+    public function MethodQuery(description:XML, methodParser:MethodParser)
     {
       super(description);
+      
+      this.methodParser = methodParser;
     }
     
     public function noArgs():MethodQuery
