@@ -26,6 +26,11 @@ package uk.co.ziazoo.fussy
     {
     }
     
+    public function doIt(a:int = 0):void
+    {
+      
+    }
+    
     public function bebeboo(h:Object, r:Object):void
     {
     }

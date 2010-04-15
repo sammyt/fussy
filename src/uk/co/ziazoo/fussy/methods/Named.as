@@ -3,7 +3,6 @@ package uk.co.ziazoo.fussy.methods
   import org.flexunit.runner.Result;
   
   import uk.co.ziazoo.fussy.query.IQueryPart;
-  import uk.co.ziazoo.fussy.query.IQueryPartResult;
   
   public class Named implements IQueryPart
   {
@@ -14,25 +13,9 @@ package uk.co.ziazoo.fussy.methods
       this.name = name;
     }
     
-    public function filter(data:XML):IQueryPartResult
+    public function filter(data:XMLList):XMLList
     {
-      return new Result(data.(@name == name));
+      return data.(@name == name);
     }
-  }
-}
-import uk.co.ziazoo.fussy.query.IQueryPartResult;
-
-class Result implements IQueryPartResult
-{
-  private var _data:XML;
-  
-  public function Result(data:XML)
-  {
-    _data = data;
-  }
-  
-  public function get data():XML
-  {
-    return _data;
   }
 }

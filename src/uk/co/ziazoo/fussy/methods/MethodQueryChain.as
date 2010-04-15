@@ -1,14 +1,12 @@
 package uk.co.ziazoo.fussy.methods
 {
-  import uk.co.ziazoo.fussy.query.IQueryChain;
+  import uk.co.ziazoo.fussy.query.AbstractQueryChain;
+  import uk.co.ziazoo.fussy.query.WithMetadata;
   
-  public class MethodQueryChain implements IQueryChain
+  public class MethodQueryChain extends AbstractQueryChain
   {
-    private var parts:Array;
-    
     public function MethodQueryChain()
     {
-      this.parts = [];
     }
     
     public function named(name:String):MethodQueryChain
@@ -17,9 +15,10 @@ package uk.co.ziazoo.fussy.methods
       return this;
     }
     
-    public function forType(type:Class):void
+    public function withMetadata(named:String):MethodQueryChain
     {
-      
+      parts.push(new WithMetadata(named));
+      return this;
     }
   }
 }

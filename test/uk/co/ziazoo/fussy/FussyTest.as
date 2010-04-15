@@ -8,22 +8,25 @@ package uk.co.ziazoo.fussy
    */ 
   public class FussyTest
   {		
-    [Test]
-    public function createMethodFussy():void
-    {
-      var fussy:Fussy = new Fussy();
-      var filter:IFilter = fussy.forType(Bubbles).findMethods().withMetadata("Inject");
-    }
     
     [Test]
     public function createVariableFussy():void
     {
       var fussy:Fussy = new Fussy();
-      var filter:IFilter = fussy.forType(Bubbles).findVariables().ofType(String);
       
-      var query:IQuery = fussy.query().findMethods().named("getThing");
+      var query:IQuery = fussy.query().findMethods().withMetadata("Inject");
       
-      query.forType(Bubbles);
+      var list:XMLList = query.forType(Bubbles);
+      
+      trace(list);
+      /*
+      
+      var factory:XMLList = getFiltered().factory.(
+      hasOwnProperty("constructor") && 
+      constructor.hasOwnProperty("parameter")
+      );
+      
+      */
     }
   }
 }
