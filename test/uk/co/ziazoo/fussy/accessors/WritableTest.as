@@ -6,7 +6,7 @@ package uk.co.ziazoo.fussy.accessors
 
   import uk.co.ziazoo.fussy.Bubbles;
 
-  public class ReadableTest
+  public class WritableTest
   {
     private var accessors:XMLList;
 
@@ -24,10 +24,10 @@ package uk.co.ziazoo.fussy.accessors
     }
 
     [Test]
-    public function all_readable_accessors():void
+    public function all_writeable_accessors():void
     {
-      var readable:Readable = new Readable();
-      var result:XMLList = readable.filter(accessors);
+      var writeable:Writable = new Writable();
+      var result:XMLList = writeable.filter(accessors);
       Assert.assertNotNull(result);
       Assert.assertTrue(result.length() == 2);
     }

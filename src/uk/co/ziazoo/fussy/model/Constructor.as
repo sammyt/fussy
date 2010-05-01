@@ -1,10 +1,9 @@
-package uk.co.ziazoo.fussy.model 
+package uk.co.ziazoo.fussy.model
 {
   public class Constructor
   {
-    public var params:Array;
-    public var metadatas:Array;
-    
+    public var parameters:Array;
+
     public function Constructor()
     {
     }

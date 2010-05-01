@@ -1,16 +1,15 @@
 package uk.co.ziazoo.fussy.properties
 {
   import flash.utils.describeType;
-  
+
   import org.flexunit.Assert;
-  
+
   import uk.co.ziazoo.fussy.Bubbles;
-  import uk.co.ziazoo.fussy.properties.OfType;
-  
+
   public class OfTypeTest
   {
     private var properties:XMLList;
-    
+
     [Before]
     public function setUp():void
     {
@@ -18,15 +17,15 @@ package uk.co.ziazoo.fussy.properties
       var p:XMLList = new XMLList(<root/>);
       p.appendChild(description.factory.variable);
       p.appendChild(description.factory.accessor);
-      properties = p.*; 
+      properties = p.*;
     }
-    
+
     [After]
     public function tearDown():void
     {
       properties = null;
     }
-    
+
     [Test]
     public function all_props_of_string():void
     {

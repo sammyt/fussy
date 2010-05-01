@@ -7,42 +7,34 @@ package uk.co.ziazoo.fussy.accessors
     public function AccessorQueryChain()
     {
     }
-    
+
     public function readable():AccessorQueryChain
     {
       parts.push(new Readable());
       return this;
     }
-    
+
     public function writable():AccessorQueryChain
     {
-      /*filtered = getFiltered().(
-        @access == "readwrite" || @access == "writeonly"
-      );*/
+      parts.push(new Writable());
       return this;
     }
-    
+
     public function readOnly():AccessorQueryChain
     {
-      /*filtered = getFiltered().(
-        @access == "readonly"
-      );*/
+      parts.push(new ReadOnly());
       return this;
     }
-    
+
     public function writeOnly():AccessorQueryChain
     {
-      /*filtered = getFiltered().(
-        @access == "writeonly"
-      );*/
+      parts.push(new WriteOnly());
       return this;
     }
-    
+
     public function readAndWrite():AccessorQueryChain
     {
-      /*filtered = getFiltered().(
-        @access == "readwrite"
-      );*/
+      parts.push(new ReadAndWrite());
       return this;
     }
   }
