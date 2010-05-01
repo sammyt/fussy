@@ -13,12 +13,12 @@ package uk.co.ziazoo.fussy.parser
 
     public function parse(result:XMLList):Array
     {
-      var metadatas:Array = [];
-      for each(var metadata:XML in result)
+      var metadata:Array = [];
+      for each(var m:XML in result)
       {
-        metadatas.push(parseMetadata(metadata));
+        metadata.push(parseMetadata(m));
       }
-      return null;
+      return metadata;
     }
 
     public function parseMetadata(reflection:XML):Metadata
@@ -29,7 +29,7 @@ package uk.co.ziazoo.fussy.parser
 
       for each(var p:XML in reflection.arg)
       {
-        metadata.properties[p.@key as String] = p.@value as String;
+        metadata.properties[String(p.@key)] = String(p.@value);
       }
       return metadata;
     }

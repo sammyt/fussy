@@ -1,33 +1,23 @@
 package uk.co.ziazoo.fussy.parser
 {
-  import uk.co.ziazoo.fussy.model.Property;
-
   public class PropertyParser implements IResultParser
   {
-    private var metadataParser:MetadataParser;
+    private var variableParser:VariableParser;
+    private var accessorParser:AccessorParser;
 
-    public function PropertyParser(metadataParser:MetadataParser)
+    public function PropertyParser(variableParser:VariableParser,
+      accessorParser:AccessorParser)
     {
-      this.metadataParser = metadataParser;
+      this.variableParser = variableParser;
+      this.accessorParser = accessorParser;
     }
 
     public function parse(result:XMLList):Array
     {
-      var props:Array = [];
-      for each(var property:XML in result)
-      {
-        props.push(parseProperty(property));
-      }
-      return props;
-    }
-
-    public function parseProperty(reflection:XML):Property
-    {
-      var property:Property = new Property();
-      property.name = reflection.@name;
-      property.type = reflection.@type;
-      property.metadata = metadataParser.parse(reflection.metadata);
-      return property;
+      var accessors:Array = accessorParser.parse(result.accessor);
+      var variables:Array = variableParser.parse(result.variable);
+      var properties:Array = accessors.concat(variables);
+      return properties;
     }
   }
 }
