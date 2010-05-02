@@ -22,5 +22,17 @@ package uk.co.ziazoo.fussy
       Assert.assertEquals(method.name, "wowowo");
       Assert.assertEquals(method.parameters.length, 2);
     }
+
+    [Test]
+    public function findInjectableProperties():void
+    {
+      var fussy:Fussy = new Fussy();
+
+      var query:IQuery = fussy.query().findProperties().withMetadata("Inject");
+
+      var list:Array = query.forType(Bubbles);
+
+      Assert.assertEquals(1, list.length);
+    }
   }
 }

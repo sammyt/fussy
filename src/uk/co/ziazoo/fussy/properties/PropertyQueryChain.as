@@ -11,6 +11,14 @@ package uk.co.ziazoo.fussy.properties
       super(parser);
     }
 
+    override protected function getList(reflection:XML):XMLList
+    {
+      var p:XMLList = new XMLList(<root/>);
+      p.appendChild(reflection.factory.variable);
+      p.appendChild(reflection.factory.accessor);
+      return p.*;
+    }
+
     public function ofType(type:Class):PropertyQueryChain
     {
       parts.push(new OfType(type));

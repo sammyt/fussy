@@ -41,7 +41,7 @@ package uk.co.ziazoo.fussy.parser
       var p:XMLList = new XMLList(<root/>);
       p.appendChild(description.factory.variable);
       p.appendChild(description.factory.accessor);
-      var props:XMLList = p;
+      var props:XMLList = p.*;
 
       trace(props);
 
@@ -58,7 +58,7 @@ package uk.co.ziazoo.fussy.parser
         <variable name="wibble" type="uk.co.ziazoo.fussy::Wibble"/>
       </root>);
 
-      var properties:Array = parser.parse(v);
+      var properties:Array = parser.parse(v.*);
 
       Assert.assertNotNull(properties);
       Assert.assertTrue(properties.length == 1);
@@ -78,7 +78,7 @@ package uk.co.ziazoo.fussy.parser
         </accessor>
       </root>);
 
-      var properties:Array = parser.parse(v);
+      var properties:Array = parser.parse(v.*);
 
       Assert.assertNotNull(properties);
       Assert.assertTrue(properties.length == 1);

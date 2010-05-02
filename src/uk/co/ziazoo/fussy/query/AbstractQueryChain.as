@@ -31,21 +31,23 @@ package uk.co.ziazoo.fussy.query
         return null;
       }
 
-      var reflection:XML = describeType(type);
-      var methods:XMLList = reflection.factory.method;
-
       var firstPart:IQueryPart = parts[0];
-      var lastResult:XMLList = firstPart.filter(methods);
+      var lastResult:XMLList = firstPart.filter(getList(describeType(type)));
 
-      var i:uint = uint(parts.length - 1);
-      while (i > 0)
+      var i:int = parts.length - 1;
+
+      while (i >= 0)
       {
         var part:IQueryPart = parts[i];
         lastResult = part.filter(lastResult);
         i--;
       }
-
       return lastResult;
+    }
+
+    protected function getList(reflection:XML):XMLList
+    {
+      return null;
     }
 
     public function get parser():IResultParser

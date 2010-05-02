@@ -12,6 +12,11 @@ package uk.co.ziazoo.fussy.methods
       super(parser);
     }
 
+    override protected function getList(reflection:XML):XMLList
+    {
+      return reflection.factory.method;
+    }
+
     public function named(name:String):MethodQueryChain
     {
       parts.push(new Named(name));

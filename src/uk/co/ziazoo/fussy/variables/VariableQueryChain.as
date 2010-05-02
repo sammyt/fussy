@@ -9,5 +9,10 @@ package uk.co.ziazoo.fussy.variables
     {
       super(parser);
     }
+
+    override protected function getList(reflection:XML):XMLList
+    {
+      return reflection.factory.varaible;
+    }
   }
 }

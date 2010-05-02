@@ -10,6 +10,11 @@ package uk.co.ziazoo.fussy.accessors
       super(parser);
     }
 
+    override protected function getList(reflection:XML):XMLList
+    {
+      return reflection.factory.accessor;
+    }
+
     public function readable():AccessorQueryChain
     {
       parts.push(new Readable());

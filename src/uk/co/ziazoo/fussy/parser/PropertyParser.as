@@ -14,8 +14,13 @@ package uk.co.ziazoo.fussy.parser
 
     public function parse(result:XMLList):Array
     {
-      var accessors:Array = accessorParser.parse(result.accessor);
-      var variables:Array = variableParser.parse(result.variable);
+      trace(result);
+      var root:XML = <root/>;
+      root.appendChild(result);
+
+      var accessors:Array = accessorParser.parse(root.accessor);
+      var variables:Array = variableParser.parse(root.variable);
+
       var properties:Array = accessors.concat(variables);
       return properties;
     }
