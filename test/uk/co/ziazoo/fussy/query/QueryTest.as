@@ -15,10 +15,8 @@ package uk.co.ziazoo.fussy.query
     [Test]
     public function creation():void
     {
-      var query:Query = new Query();
+      var query:Query = new Query(null, null, null);
       query.findMethods().named("getEtc");
-
-
     }
   }
 }

@@ -1,11 +1,13 @@
 package uk.co.ziazoo.fussy.accessors
 {
+  import uk.co.ziazoo.fussy.parser.IResultParser;
   import uk.co.ziazoo.fussy.properties.PropertyQueryChain;
 
   public class AccessorQueryChain extends PropertyQueryChain
   {
-    public function AccessorQueryChain()
+    public function AccessorQueryChain(parser:IResultParser)
     {
+      super(parser);
     }
 
     public function readable():AccessorQueryChain

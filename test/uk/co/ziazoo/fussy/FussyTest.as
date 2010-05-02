@@ -1,21 +1,26 @@
 package uk.co.ziazoo.fussy
 {
+  import org.flexunit.Assert;
+
+  import uk.co.ziazoo.fussy.model.Method;
   import uk.co.ziazoo.fussy.query.IQuery;
 
-  /**
-   * nothing useful here yet, just demos of the api
-   */
   public class FussyTest
   {
 
     [Test]
-    public function createVariableFussy():void
+    public function findInjectableMethods():void
     {
       var fussy:Fussy = new Fussy();
-
-      var query:IQuery = fussy.query().findMethods().withMetadata("Inject");
+      var query:IQuery = fussy.query().findMethods().withMetadata("Inject").withArguments();
 
       var list:Array = query.forType(Bubbles);
+
+      Assert.assertEquals(1, list.length);
+
+      var method:Method = list[0] as Method;
+      Assert.assertEquals(method.name, "wowowo");
+      Assert.assertEquals(method.parameters.length, 2);
     }
   }
 }

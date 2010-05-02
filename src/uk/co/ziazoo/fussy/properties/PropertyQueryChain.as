@@ -1,12 +1,14 @@
 package uk.co.ziazoo.fussy.properties
 {
+  import uk.co.ziazoo.fussy.parser.IResultParser;
   import uk.co.ziazoo.fussy.query.AbstractQueryChain;
   import uk.co.ziazoo.fussy.query.WithMetadata;
 
   public class PropertyQueryChain extends AbstractQueryChain
   {
-    public function PropertyQueryChain()
+    public function PropertyQueryChain(parser:IResultParser)
     {
+      super(parser);
     }
 
     public function ofType(type:Class):PropertyQueryChain

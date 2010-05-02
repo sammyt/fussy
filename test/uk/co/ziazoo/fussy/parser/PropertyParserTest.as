@@ -5,8 +5,10 @@ package uk.co.ziazoo.fussy.parser
   import org.flexunit.Assert;
 
   import uk.co.ziazoo.fussy.Bubbles;
+  import uk.co.ziazoo.fussy.model.Accessor;
   import uk.co.ziazoo.fussy.model.Metadata;
   import uk.co.ziazoo.fussy.model.Property;
+  import uk.co.ziazoo.fussy.model.Variable;
 
   public class PropertyParserTest
   {
@@ -61,7 +63,7 @@ package uk.co.ziazoo.fussy.parser
       Assert.assertNotNull(properties);
       Assert.assertTrue(properties.length == 1);
 
-      var prop:Property = properties[0] as Property;
+      var prop:Variable = properties[0] as Variable;
 
       Assert.assertEquals("wibble", prop.name);
       Assert.assertEquals("uk.co.ziazoo.fussy::Wibble", prop.type);
@@ -81,11 +83,13 @@ package uk.co.ziazoo.fussy.parser
       Assert.assertNotNull(properties);
       Assert.assertTrue(properties.length == 1);
 
-      var prop:Property = properties[0] as Property;
+      var prop:Accessor = properties[0] as Accessor;
 
       Assert.assertEquals("thing", prop.name);
       Assert.assertEquals("String", prop.type);
       Assert.assertEquals(1, prop.metadata.length);
+      Assert.assertEquals("writeonly", prop.access);
+      Assert.assertEquals("uk.co.ziazoo.fussy::Bubbles", prop.declaredBy);
     }
   }
 }

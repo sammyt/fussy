@@ -13,17 +13,18 @@ package uk.co.ziazoo.fussy.query
 
     private var _parser:IResultParser;
 
-    public function AbstractQueryChain()
+    public function AbstractQueryChain(parser:IResultParser)
     {
       parts = [];
+      _parser = parser;
     }
 
     public function forType(type:Class):Array
     {
-      return parser.parse(xmlforType(type));
+      return parser.parse(xmlForType(type));
     }
 
-    public function xmlforType(type:Class):XMLList
+    public function xmlForType(type:Class):XMLList
     {
       if (parts.length == 0)
       {

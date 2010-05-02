@@ -9,7 +9,7 @@ package uk.co.ziazoo.fussy.methods
   {
     public function MethodQueryChain(parser:IResultParser)
     {
-      this.parser = parser;
+      super(parser);
     }
 
     public function named(name:String):MethodQueryChain
@@ -21,6 +21,24 @@ package uk.co.ziazoo.fussy.methods
     public function withMetadata(named:String):MethodQueryChain
     {
       parts.push(new WithMetadata(named));
+      return this;
+    }
+
+    public function noArguments():MethodQueryChain
+    {
+      parts.push(new NoArgs());
+      return this;
+    }
+
+    public function noCompulsoryArguments():MethodQueryChain
+    {
+      parts.push(new NoCompulsoryArgs());
+      return this;
+    }
+
+    public function withArguments():MethodQueryChain
+    {
+      parts.push(new WithArguments());
       return this;
     }
   }
