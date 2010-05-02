@@ -1,7 +1,7 @@
 package uk.co.ziazoo.fussy.query
 {
 
-  public class WithMetadata implements IQueryPart
+  dynamic public class WithMetadata implements IQueryPart
   {
     private var name:String;
 
@@ -12,7 +12,6 @@ package uk.co.ziazoo.fussy.query
 
     public function filter(data:XMLList):XMLList
     {
-      // trace("Filter:", data);
       return data.(
         hasOwnProperty("metadata") && metadata.(@name == name).length() > 0
         );
