@@ -37,7 +37,7 @@ package uk.co.ziazoo.fussy.methods
      * @param types the classes of the arguments
      * @return MethodQueryChain to allow query DSL
      */
-    public function hasTypeSignature(...types):MethodQueryChain
+    public function withTypeSignature(...types):MethodQueryChain
     {
       parts.push(new HasTypeSignature(types));
       return this;
@@ -48,7 +48,7 @@ package uk.co.ziazoo.fussy.methods
      * @param count number of arguments the method has in its signature
      * @return MethodQueryChain to allow query DSL
      */
-    public function argumentsLengthOf(count:int):MethodQueryChain
+    public function withArgsLengthOf(count:int):MethodQueryChain
     {
       parts.push(new ArgumentsLengthOf(count));
       return this;
