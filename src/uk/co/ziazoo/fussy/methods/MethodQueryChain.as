@@ -39,6 +39,7 @@ package uk.co.ziazoo.fussy.methods
      */
     public function hasTypeSignature(...types):MethodQueryChain
     {
+      parts.push(new HasTypeSignature(types));
       return this;
     }
 
@@ -49,6 +50,7 @@ package uk.co.ziazoo.fussy.methods
      */
     public function argumentsLengthOf(count:int):MethodQueryChain
     {
+      parts.push(new ArgumentsLengthOf(count));
       return this;
     }
 

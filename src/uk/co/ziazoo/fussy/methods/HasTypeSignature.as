@@ -8,7 +8,7 @@ package uk.co.ziazoo.fussy.methods
   {
     private var types:Array;
 
-    public function HasTypeSignature(...types)
+    public function HasTypeSignature(types:Array)
     {
       this.types = types;
     }

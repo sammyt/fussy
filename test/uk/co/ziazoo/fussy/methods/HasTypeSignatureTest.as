@@ -13,7 +13,7 @@ package uk.co.ziazoo.fussy.methods
     [Test]
     public function checkTypes():void
     {
-      var queryPart:HasTypeSignature = new HasTypeSignature(int, String, Wibble);
+      var queryPart:HasTypeSignature = new HasTypeSignature([int, String, Wibble]);
 
       var methods:XML = <root>
         <method name="bebeboo" declaredBy="uk.co.ziazoo.fussy::Bubbles" returnType="void">
