@@ -1,5 +1,6 @@
 package uk.co.ziazoo.fussy
 {
+  [Fussy]
   public class Bubbles
   {
     public var wibble:Wibble;

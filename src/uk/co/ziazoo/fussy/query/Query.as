@@ -1,7 +1,7 @@
 package uk.co.ziazoo.fussy.query
 {
   import uk.co.ziazoo.fussy.IReflector;
-  import uk.co.ziazoo.fussy.Type;
+  import uk.co.ziazoo.fussy.TypeDescription;
   import uk.co.ziazoo.fussy.accessors.AccessorQueryChain;
   import uk.co.ziazoo.fussy.methods.MethodQueryChain;
   import uk.co.ziazoo.fussy.parser.IResultParser;
@@ -13,27 +13,23 @@ package uk.co.ziazoo.fussy.query
     private var methodParser:IResultParser;
     private var propertyParser:IResultParser;
     private var constructorParser:IResultParser;
+    private var metadataParser:IResultParser;
     private var reflector:IReflector;
 
     public function Query(reflector:IReflector, methodParser:IResultParser,
-      propertyParser:IResultParser, constructorParser:IResultParser)
+      propertyParser:IResultParser, constructorParser:IResultParser,
+      metadataParser:IResultParser)
     {
       this.propertyParser = propertyParser;
       this.methodParser = methodParser;
       this.constructorParser = constructorParser;
+      this.metadataParser = metadataParser;
       this.reflector = reflector;
     }
 
-    // TODO: review Type queries api
-
-    public function type(type:Class):Type
+    public function getTypeQuery(type:Class):ITypeQuery
     {
-      return null;
-    }
-
-    public function forQName(qName:String):Type
-    {
-      return null;
+      return new TypeQuery(reflector, constructorParser, metadataParser);
     }
 
     public function findMethods():MethodQueryChain
