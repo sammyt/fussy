@@ -70,5 +70,11 @@ package uk.co.ziazoo.fussy
       var method:Method = list[0] as Method;
       Assert.assertEquals(method.name, "doIt");
     }
+
+    [Test]
+    public function getConstructor():void
+    {
+
+    }
   }
 }

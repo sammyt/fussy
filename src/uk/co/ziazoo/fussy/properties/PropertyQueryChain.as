@@ -1,15 +1,18 @@
 package uk.co.ziazoo.fussy.properties
 {
+  import uk.co.ziazoo.fussy.IReflector;
   import uk.co.ziazoo.fussy.parser.IResultParser;
   import uk.co.ziazoo.fussy.query.AbstractQueryChain;
   import uk.co.ziazoo.fussy.query.WithMetadata;
 
   public class PropertyQueryChain extends AbstractQueryChain
   {
-    public function PropertyQueryChain(parser:IResultParser)
+    public function PropertyQueryChain(reflector:IReflector, parser:IResultParser)
     {
-      super(parser);
+      super(reflector, parser);
     }
+
+    // TODO: allow readable/writable queries on properties
 
     override protected function getList(reflection:XML):XMLList
     {

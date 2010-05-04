@@ -1,5 +1,6 @@
 package uk.co.ziazoo.fussy.query
 {
+  import uk.co.ziazoo.fussy.IReflector;
   import uk.co.ziazoo.fussy.Type;
   import uk.co.ziazoo.fussy.accessors.AccessorQueryChain;
   import uk.co.ziazoo.fussy.methods.MethodQueryChain;
@@ -12,14 +13,18 @@ package uk.co.ziazoo.fussy.query
     private var methodParser:IResultParser;
     private var propertyParser:IResultParser;
     private var constructorParser:IResultParser;
+    private var reflector:IReflector;
 
-    public function Query(methodParser:IResultParser,
+    public function Query(reflector:IReflector, methodParser:IResultParser,
       propertyParser:IResultParser, constructorParser:IResultParser)
     {
       this.propertyParser = propertyParser;
       this.methodParser = methodParser;
       this.constructorParser = constructorParser;
+      this.reflector = reflector;
     }
+
+    // TODO: review Type queries api
 
     public function type(type:Class):Type
     {
@@ -33,22 +38,22 @@ package uk.co.ziazoo.fussy.query
 
     public function findMethods():MethodQueryChain
     {
-      return new MethodQueryChain(methodParser);
+      return new MethodQueryChain(reflector, methodParser);
     }
 
     public function findProperties():PropertyQueryChain
     {
-      return new PropertyQueryChain(propertyParser);
+      return new PropertyQueryChain(reflector, propertyParser);
     }
 
     public function findAccessors():AccessorQueryChain
     {
-      return new AccessorQueryChain(propertyParser);
+      return new AccessorQueryChain(reflector, propertyParser);
     }
 
     public function findVariables():VariableQueryChain
     {
-      return new VariableQueryChain(propertyParser);
+      return new VariableQueryChain(reflector, propertyParser);
     }
   }
 }

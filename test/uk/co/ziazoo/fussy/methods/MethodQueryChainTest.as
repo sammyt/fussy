@@ -3,6 +3,7 @@ package uk.co.ziazoo.fussy.methods
   import flash.utils.describeType;
 
   import uk.co.ziazoo.fussy.Bubbles;
+  import uk.co.ziazoo.fussy.Reflector;
 
   public class MethodQueryChainTest
   {
@@ -24,7 +25,7 @@ package uk.co.ziazoo.fussy.methods
     [Test]
     public function createNameQuery():void
     {
-      var chain:MethodQueryChain = new MethodQueryChain(null);
+      var chain:MethodQueryChain = new MethodQueryChain(new Reflector(), null);
       chain.named("wowowo");
     }
   }

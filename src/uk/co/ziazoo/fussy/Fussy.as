@@ -15,8 +15,9 @@ package uk.co.ziazoo.fussy
     private var methodParser:IResultParser;
     private var propertyParser:IResultParser;
     private var constructorParser:IResultParser;
+    private var _reflector:IReflector;
 
-    public function Fussy()
+    public function Fussy(reflector:IReflector = null)
     {
       var parameterParser:ParameterParser = new ParameterParser();
       var metadataParser:MetadataParser = new MetadataParser();
@@ -26,11 +27,23 @@ package uk.co.ziazoo.fussy
         new VariableParser(metadataParser), new AccessorParser(metadataParser));
 
       constructorParser = new ConstructorParser(parameterParser);
+
+      _reflector = reflector;
     }
 
     public function query():Query
     {
-      return new Query(methodParser, propertyParser, constructorParser);
+      return new Query(reflector, methodParser,
+        propertyParser, constructorParser);
+    }
+
+    public function get reflector():IReflector
+    {
+      if (!_reflector)
+      {
+        _reflector = new Reflector();
+      }
+      return _reflector;
     }
   }
 }

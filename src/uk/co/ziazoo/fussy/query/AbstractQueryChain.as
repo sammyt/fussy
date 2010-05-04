@@ -2,6 +2,7 @@ package uk.co.ziazoo.fussy.query
 {
   import flash.utils.describeType;
 
+  import uk.co.ziazoo.fussy.IReflector;
   import uk.co.ziazoo.fussy.parser.IResultParser;
 
   public class AbstractQueryChain implements IQueryChain
@@ -11,12 +12,19 @@ package uk.co.ziazoo.fussy.query
      */
     protected var parts:Array;
 
+    /**
+     * @private
+     */
+    protected var reflector:IReflector;
+
     private var _parser:IResultParser;
 
-    public function AbstractQueryChain(parser:IResultParser)
+
+    public function AbstractQueryChain(reflector:IReflector, parser:IResultParser)
     {
       parts = [];
       _parser = parser;
+      this.reflector = reflector;
     }
 
     public function forType(type:Class):Array
@@ -32,7 +40,7 @@ package uk.co.ziazoo.fussy.query
       }
 
       var firstPart:IQueryPart = parts[0];
-      var lastResult:XMLList = firstPart.filter(getList(describeType(type)));
+      var lastResult:XMLList = firstPart.filter(getList(reflector.forType(type)));
 
       var i:int = parts.length - 1;
 
