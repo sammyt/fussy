@@ -72,9 +72,11 @@ package uk.co.ziazoo.fussy
     }
 
     [Test]
-    public function getConstructor():void
+    [Ignore]
+    public function getTypeDescription():void
     {
-
+      var fussy:Fussy = new Fussy();
+      var description:TypeDescription = fussy.query().getTypeQuery().forType(Bubbles);
     }
   }
 }

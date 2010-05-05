@@ -14,7 +14,6 @@ package uk.co.ziazoo.fussy.parser
 
     public function parse(result:XMLList):Array
     {
-      trace(result);
       var root:XML = <root/>;
       root.appendChild(result);
 

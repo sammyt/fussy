@@ -27,7 +27,7 @@ package uk.co.ziazoo.fussy.query
       this.reflector = reflector;
     }
 
-    public function getTypeQuery(type:Class):ITypeQuery
+    public function getTypeQuery():ITypeQuery
     {
       return new TypeQuery(reflector, constructorParser, metadataParser);
     }

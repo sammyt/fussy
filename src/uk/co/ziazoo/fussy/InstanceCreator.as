@@ -2,14 +2,15 @@ package uk.co.ziazoo.fussy
 {
   public class InstanceCreator
   {
-    public static function create( type:Class, params:Array ):Object
+    public static function create(type:Class, params:Array):Object
     {
-      if( !params )
+      if (!params)
       {
         return new type();
       }
-      
-      switch ( params.length ) {
+
+      switch (params.length)
+      {
         case 0:
           return new type();
         case 1:

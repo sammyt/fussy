@@ -7,9 +7,11 @@ package uk.co.ziazoo.fussy
   public class Reflector implements IReflector
   {
     private var cache:Dictionary;
+    private var needsPlayerFix:Boolean;
 
-    public function Reflector()
+    public function Reflector(needsPlayerFix:Boolean = false)
     {
+      this.needsPlayerFix = needsPlayerFix;
       cache = new Dictionary();
     }
 
@@ -25,8 +27,30 @@ package uk.co.ziazoo.fussy
         return description;
       }
 
-      description = cache[type] = describeType(type);
+      description = describeType(type);
 
+      if (needsPlayerFix)
+      {
+        var parameters:XMLList = description.factory.constructor.parameter;
+        if (parameters.length() > 0)
+        {
+          try
+          {
+            var args:Array = [];
+            for (var i:int = 0; i < parameters.length(); i++)
+            {
+              args.push(null);
+            }
+            InstanceCreator.create(type, args);
+            description = describeType(type);
+          }
+          catch(error:Error)
+          {
+          }
+        }
+      }
+
+      cache[type] = description;
       return description;
     }
 
@@ -68,7 +92,7 @@ package uk.co.ziazoo.fussy
       clearForType(type);
     }
 
-    public function hasReflection(type):Boolean
+    public function hasReflection(type:Class):Boolean
     {
       return cache[type] != null;
     }

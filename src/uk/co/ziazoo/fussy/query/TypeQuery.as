@@ -33,7 +33,7 @@ package uk.co.ziazoo.fussy.query
         return description;
       }
       var reflection:XML = reflector.forType(type);
-      trace(reflection);
+
       description = new TypeDescription
         (
           getQName(reflection),

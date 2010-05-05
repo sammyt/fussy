@@ -1,5 +1,9 @@
 package uk.co.ziazoo.fussy
 {
+  import flash.system.Capabilities;
+
+  import flash.utils.Dictionary;
+
   import uk.co.ziazoo.fussy.parser.AccessorParser;
   import uk.co.ziazoo.fussy.parser.ConstructorParser;
   import uk.co.ziazoo.fussy.parser.IResultParser;
@@ -42,9 +46,25 @@ package uk.co.ziazoo.fussy
     {
       if (!_reflector)
       {
-        _reflector = new Reflector();
+        _reflector = new Reflector(needsFlashPlayerHack());
       }
       return _reflector;
+    }
+
+    /**
+     * @private
+     */
+    internal static function needsFlashPlayerHack():Boolean
+    {
+      var versionNumber:String = Capabilities.version
+      var versionArray:Array = versionNumber.split(",");
+      var osPlusVersion:Array = versionArray[0].split(" ");
+
+      var major:int = parseInt(osPlusVersion[1]);
+      var minor:int = parseInt(versionArray[1]);
+      var build:int = parseInt(versionArray[2]);
+
+      return !(major >= 10 && minor >= 1 && build >= 52);
     }
   }
 }

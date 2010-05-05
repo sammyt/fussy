@@ -9,5 +9,11 @@ package uk.co.ziazoo.fussy.model
     public function Method()
     {
     }
+
+    public function invoke(instance:Object, args:Array = null):Object
+    {
+      var fnt:Function = instance[ name ] as Function;
+      return fnt.apply(instance, args);
+    }
   }
 }

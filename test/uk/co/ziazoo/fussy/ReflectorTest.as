@@ -1,5 +1,6 @@
 package uk.co.ziazoo.fussy
 {
+  import flash.system.Capabilities;
   import flash.utils.getQualifiedClassName;
 
   import org.flexunit.Assert;
@@ -15,7 +16,7 @@ package uk.co.ziazoo.fussy
     [Before]
     public function setUp():void
     {
-      reflector = new Reflector();
+      reflector = new Reflector(Fussy.needsFlashPlayerHack());
     }
 
     [After]

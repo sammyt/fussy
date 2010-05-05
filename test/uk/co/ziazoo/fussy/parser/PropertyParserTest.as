@@ -43,8 +43,6 @@ package uk.co.ziazoo.fussy.parser
       p.appendChild(description.factory.accessor);
       var props:XMLList = p.*;
 
-      trace(props);
-
       var properties:Array = parser.parse(props);
 
       Assert.assertNotNull(properties);
