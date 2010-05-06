@@ -8,7 +8,7 @@ package uk.co.ziazoo.fussy.query
   import uk.co.ziazoo.fussy.properties.PropertyQueryChain;
   import uk.co.ziazoo.fussy.variables.VariableQueryChain;
 
-  public class Query
+  public class QueryBuilder
   {
     private var methodParser:IResultParser;
     private var propertyParser:IResultParser;
@@ -16,7 +16,7 @@ package uk.co.ziazoo.fussy.query
     private var metadataParser:IResultParser;
     private var reflector:IReflector;
 
-    public function Query(reflector:IReflector, methodParser:IResultParser,
+    public function QueryBuilder(reflector:IReflector, methodParser:IResultParser,
       propertyParser:IResultParser, constructorParser:IResultParser,
       metadataParser:IResultParser)
     {

@@ -12,7 +12,7 @@ package uk.co.ziazoo.fussy
   import uk.co.ziazoo.fussy.parser.ParameterParser;
   import uk.co.ziazoo.fussy.parser.PropertyParser;
   import uk.co.ziazoo.fussy.parser.VariableParser;
-  import uk.co.ziazoo.fussy.query.Query;
+  import uk.co.ziazoo.fussy.query.QueryBuilder;
 
   public class Fussy
   {
@@ -36,9 +36,9 @@ package uk.co.ziazoo.fussy
       _reflector = reflector;
     }
 
-    public function query():Query
+    public function query():QueryBuilder
     {
-      return new Query(reflector, methodParser,
+      return new QueryBuilder(reflector, methodParser,
         propertyParser, constructorParser, metadataParser);
     }
 
