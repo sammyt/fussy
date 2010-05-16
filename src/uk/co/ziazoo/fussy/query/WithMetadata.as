@@ -12,6 +12,7 @@ package uk.co.ziazoo.fussy.query
 
     public function filter(data:XMLList):XMLList
     {
+      var a:String = data.toString();
       return data.(
         hasOwnProperty("metadata") && metadata.(@name == name).length() > 0
         );

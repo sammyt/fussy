@@ -1,5 +1,7 @@
 package uk.co.ziazoo.fussy
 {
+  import flash.utils.describeType;
+
   import org.flexunit.Assert;
 
   import uk.co.ziazoo.fussy.model.Method;
@@ -59,7 +61,7 @@ package uk.co.ziazoo.fussy
     }
 
     [Test]
-    public function filterByArgsLengh():void
+    public function filterByArgsLength():void
     {
       var fussy:Fussy = new Fussy();
       var query:IQuery = fussy.query().findMethods().withArgsLengthOf(1);
@@ -69,6 +71,32 @@ package uk.co.ziazoo.fussy
 
       var method:Method = list[0] as Method;
       Assert.assertEquals(method.name, "doIt");
+    }
+
+    [Test]
+    [Ignore]
+    public function letsSee():void
+    {
+      var a:XML = describeType(Thing);
+      trace(a);
+
+      var ns:Namespace = new Namespace("inject.demo");
+      var thing:Thing = new Thing();
+      var f:* = ns::thing["doItBacon"];
+
+      trace(f);
+    }
+
+
+    [Test]
+    public function issue3Test():void
+    {
+      var fussy:Fussy = new Fussy();
+      var query1:IQuery = fussy.query().findVariables().withMetadata("Fussy");
+      var list1:Array = query1.forType(Bubbles);
+
+      Assert.assertEquals(list1.length, 1);
+      trace("list1.length:", list1.length);
     }
 
     [Test]

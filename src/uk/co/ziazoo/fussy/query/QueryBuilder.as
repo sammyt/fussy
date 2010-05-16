@@ -1,14 +1,13 @@
 package uk.co.ziazoo.fussy.query
 {
   import uk.co.ziazoo.fussy.IReflector;
-  import uk.co.ziazoo.fussy.TypeDescription;
   import uk.co.ziazoo.fussy.accessors.AccessorQueryChain;
   import uk.co.ziazoo.fussy.methods.MethodQueryChain;
   import uk.co.ziazoo.fussy.parser.IResultParser;
   import uk.co.ziazoo.fussy.properties.PropertyQueryChain;
   import uk.co.ziazoo.fussy.variables.VariableQueryChain;
 
-  public class QueryBuilder
+  public class QueryBuilder implements IQueryBuilder
   {
     private var methodParser:IResultParser;
     private var propertyParser:IResultParser;
