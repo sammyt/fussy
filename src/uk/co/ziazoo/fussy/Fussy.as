@@ -19,7 +19,7 @@ package uk.co.ziazoo.fussy
     private var methodParser:IResultParser;
     private var propertyParser:IResultParser;
     private var constructorParser:IResultParser;
-    private var metadataParser:MetadataParser
+    private var metadataParser:MetadataParser;
     private var _reflector:IReflector;
 
     public function Fussy(reflector:IReflector = null)
@@ -29,7 +29,7 @@ package uk.co.ziazoo.fussy
 
       methodParser = new MethodParser(parameterParser, metadataParser);
       propertyParser = new PropertyParser(
-        new VariableParser(metadataParser), new AccessorParser(metadataParser));
+              new VariableParser(metadataParser), new AccessorParser(metadataParser));
 
       constructorParser = new ConstructorParser(parameterParser);
 
@@ -39,13 +39,12 @@ package uk.co.ziazoo.fussy
     public function query():QueryBuilder
     {
       return new QueryBuilder(reflector, methodParser,
-        propertyParser, constructorParser, metadataParser);
+              propertyParser, constructorParser, metadataParser);
     }
 
     public function get reflector():IReflector
     {
-      if (!_reflector)
-      {
+      if (!_reflector) {
         _reflector = new Reflector(needsFlashPlayerHack());
       }
       return _reflector;
@@ -56,7 +55,7 @@ package uk.co.ziazoo.fussy
      */
     internal static function needsFlashPlayerHack():Boolean
     {
-      var versionNumber:String = Capabilities.version
+      var versionNumber:String = Capabilities.version;
       var versionArray:Array = versionNumber.split(",");
       var osPlusVersion:Array = versionArray[0].split(" ");
 
