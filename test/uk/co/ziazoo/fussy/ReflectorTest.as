@@ -16,7 +16,7 @@ package uk.co.ziazoo.fussy
     [Before]
     public function setUp():void
     {
-      reflector = new Reflector(Fussy.needsFlashPlayerHack());
+      reflector = new Reflector();
     }
 
     [After]

@@ -1,7 +1,11 @@
-*.settings
-*.actionScriptProperties
-*.flexLibProperties
-*.FlexUnitSettings
-*.project
-*.DS_Store
+.settings
+.actionScriptProperties
+.flexLibProperties
+.FlexUnitSettings
+.project
+.DS_Store
 *bin/
+fussy.iml
+fussy.ipr
+fussy.iws
+target/

@@ -1,7 +1,6 @@
 package uk.co.ziazoo.fussy.query
 {
   import flash.utils.Dictionary;
-  import flash.utils.getDefinitionByName;
 
   import uk.co.ziazoo.fussy.IReflector;
   import uk.co.ziazoo.fussy.TypeDescription;
@@ -49,7 +48,7 @@ package uk.co.ziazoo.fussy.query
 
     public function forQName(qName:String):TypeDescription
     {
-      return forType(Class(getDefinitionByName(qName)));
+      return forType(Class(reflector.applicationDomain.getDefinition(qName)));
     }
 
     private function getQName(reflection:XML):String

@@ -23,7 +23,7 @@ package uk.co.ziazoo.fussy.parser
       var parser:ConstructorParser =
         new ConstructorParser(new ParameterParser());
 
-      var reflector:Reflector = new Reflector(true);
+      var reflector:Reflector = new Reflector();
 
       var result:Array = parser.parse(reflector.forType(Banana).factory);
 
@@ -45,7 +45,7 @@ package uk.co.ziazoo.fussy.parser
       var parser:ConstructorParser =
         new ConstructorParser(new ParameterParser());
 
-      var reflector:Reflector = new Reflector(true);
+      var reflector:Reflector = new Reflector();
 
       var result:Array = parser.parse(reflector.forType(Bubbles).factory);
 

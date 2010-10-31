@@ -1,5 +1,6 @@
 package uk.co.ziazoo.fussy
 {
+  import flash.system.ApplicationDomain;
   import flash.system.Capabilities;
 
   import flash.utils.Dictionary;
@@ -45,25 +46,9 @@ package uk.co.ziazoo.fussy
     public function get reflector():IReflector
     {
       if (!_reflector) {
-        _reflector = new Reflector(needsFlashPlayerHack());
+        _reflector = new Reflector();
       }
       return _reflector;
-    }
-
-    /**
-     * @private
-     */
-    internal static function needsFlashPlayerHack():Boolean
-    {
-      var versionNumber:String = Capabilities.version;
-      var versionArray:Array = versionNumber.split(",");
-      var osPlusVersion:Array = versionArray[0].split(" ");
-
-      var major:int = parseInt(osPlusVersion[1]);
-      var minor:int = parseInt(versionArray[1]);
-      var build:int = parseInt(versionArray[2]);
-
-      return !(major >= 10 && minor >= 1 && build >= 52);
     }
   }
 }

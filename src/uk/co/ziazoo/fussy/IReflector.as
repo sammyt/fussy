@@ -1,5 +1,7 @@
 package uk.co.ziazoo.fussy
 {
+  import flash.system.ApplicationDomain;
+  
   /**
    * stores result of describeType calls
    */
@@ -35,5 +37,8 @@ package uk.co.ziazoo.fussy
      * @param qName of type who's description reference can be released
      */
     function clearForQName(qName:String):void;
+    
+    function get applicationDomain():ApplicationDomain;
+    function set applicationDomain(value:ApplicationDomain):void;
   }
 }

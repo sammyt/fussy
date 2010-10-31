@@ -1,17 +1,16 @@
 package uk.co.ziazoo.fussy
 {
+  import flash.system.ApplicationDomain;
   import flash.utils.Dictionary;
   import flash.utils.describeType;
-  import flash.utils.getDefinitionByName;
 
   public class Reflector implements IReflector
   {
     private var cache:Dictionary;
-    private var needsPlayerFix:Boolean;
+    private var _applicationDomain:ApplicationDomain;
 
-    public function Reflector(needsPlayerFix:Boolean = false)
+    public function Reflector()
     {
-      this.needsPlayerFix = needsPlayerFix;
       cache = new Dictionary();
     }
 
@@ -28,10 +27,13 @@ package uk.co.ziazoo.fussy
       }
 
       description = describeType(type);
-
-      if (needsPlayerFix)
+      var constructor:XML = description.factory.constructor[0];
+      
+      if ( constructor &&
+        constructor.parameter.(@type == "*").length() 
+          == constructor.parameter.@type.length())
       {
-        var parameters:XMLList = description.factory.constructor.parameter;
+        var parameters:XMLList = constructor.parameter;
         if (parameters.length() > 0)
         {
           try
@@ -59,7 +61,7 @@ package uk.co.ziazoo.fussy
      */
     public function forQName(qName:String):XML
     {
-      var type:Class = Class(getDefinitionByName(qName));
+      var type:Class = Class(applicationDomain.getDefinition(qName));
       return forType(type);
     }
 
@@ -88,13 +90,23 @@ package uk.co.ziazoo.fussy
      */
     public function clearForQName(qName:String):void
     {
-      var type:Class = Class(getDefinitionByName(qName));
+      var type:Class = Class(applicationDomain.getDefinition(qName));
       clearForType(type);
     }
 
     public function hasReflection(type:Class):Boolean
     {
       return cache[type] != null;
+    }
+    
+    public function get applicationDomain():ApplicationDomain
+    {
+      return _applicationDomain || ApplicationDomain.currentDomain;
+    }
+    
+    public function set applicationDomain(value:ApplicationDomain):void
+    {
+      _applicationDomain = value;
     }
   }
 }
