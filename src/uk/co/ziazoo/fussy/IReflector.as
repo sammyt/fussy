@@ -38,6 +38,10 @@ package uk.co.ziazoo.fussy
      */
     function clearForQName(qName:String):void;
     
+    /**
+     * The application domain which fussy will request class
+     * definitions from
+     */ 
     function get applicationDomain():ApplicationDomain;
     function set applicationDomain(value:ApplicationDomain):void;
   }
