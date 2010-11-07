@@ -9,9 +9,10 @@ package uk.co.ziazoo.fussy
     private var cache:Dictionary;
     private var _applicationDomain:ApplicationDomain;
 
-    public function Reflector()
+    public function Reflector(applicationDomain:ApplicationDomain = null)
     {
       cache = new Dictionary();
+      _applicationDomain = applicationDomain;
     }
 
     /**
@@ -28,10 +29,10 @@ package uk.co.ziazoo.fussy
 
       description = describeType(type);
       var constructor:XML = description.factory.constructor[0];
-      
-      if ( constructor &&
-        constructor.parameter.(@type == "*").length() 
-          == constructor.parameter.@type.length())
+
+      if (constructor &&
+              constructor.parameter.(@type == "*").length()
+                      == constructor.parameter.@type.length())
       {
         var parameters:XMLList = constructor.parameter;
         if (parameters.length() > 0)
@@ -98,12 +99,12 @@ package uk.co.ziazoo.fussy
     {
       return cache[type] != null;
     }
-    
+
     public function get applicationDomain():ApplicationDomain
     {
       return _applicationDomain || ApplicationDomain.currentDomain;
     }
-    
+
     public function set applicationDomain(value:ApplicationDomain):void
     {
       _applicationDomain = value;
