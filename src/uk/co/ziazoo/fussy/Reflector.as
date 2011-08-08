@@ -2,7 +2,9 @@ package uk.co.ziazoo.fussy
 {
   import flash.system.ApplicationDomain;
   import flash.utils.Dictionary;
+  import flash.utils.Proxy;
   import flash.utils.describeType;
+  import flash.utils.getQualifiedClassName;
 
   public class Reflector implements IReflector
   {
@@ -108,6 +110,20 @@ package uk.co.ziazoo.fussy
     public function set applicationDomain(value:ApplicationDomain):void
     {
       _applicationDomain = value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getType(object:Object):Class
+    {
+      if (object is Proxy || object is Number || object is XML || object is
+              XMLList)
+      {
+        return Class(applicationDomain.getDefinition(getQualifiedClassName
+                (object)));
+      }
+      return object.constructor as Class;
     }
   }
 }

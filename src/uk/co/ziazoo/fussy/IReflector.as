@@ -37,7 +37,14 @@ package uk.co.ziazoo.fussy
      * @param qName of type who's description reference can be released
      */
     function clearForQName(qName:String):void;
-    
+
+    /**
+     * Gets the class definition for a object
+     * @param object
+     * @return the class object for the object
+     */
+    function getType(object:Object):Class;
+
     /**
      * The application domain which fussy will request class
      * definitions from
