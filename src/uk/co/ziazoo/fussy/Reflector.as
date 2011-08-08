@@ -37,12 +37,13 @@ package uk.co.ziazoo.fussy
                       == constructor.parameter.@type.length())
       {
         var parameters:XMLList = constructor.parameter;
-        if (parameters.length() > 0)
+        var len:int = parameters.length();
+        if (len > 0)
         {
           try
           {
             var args:Array = [];
-            for (var i:int = 0; i < parameters.length(); i++)
+            for (var i:int = 0; i < len; i++)
             {
               args.push(null);
             }
